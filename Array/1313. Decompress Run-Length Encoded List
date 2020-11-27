@@ -1,0 +1,25 @@
+#We are given a list nums of integers representing a list compressed with run-length encoding.
+#Consider each adjacent pair of elements [freq, val] = [nums[2*i], nums[2*i+1]] (with i >= 0).  For each such pair, there are freq elements with value val concatenated in a sublist. Concatenate all the sublists from left to right to generate the decompressed list.
+#Return the decompressed list.
+
+#Solution 1: my original submission
+class Solution:
+    def decompressRLElist(self, nums: List[int]) -> List[int]:
+        res = []
+        for i in range(int(len(nums)/2)):
+            for j in range(nums[2 * i]):
+                res.append(nums[2*i+1])
+        return res
+
+#Solution 2: easier soution
+class Solution:
+    def decompressRLElist(self, N: List[int]) -> List[int]:
+        L, A = len(N), []
+        for i in range(0,L,2):
+            A.extend(N[i]*[N[i+1]])
+        return A
+        
+#Solution 3: one line solution
+class Solution:
+    def decompressRLElist(self, N: List[int]) -> List[int]:
+        return sum([N[i]*[N[i+1]] for i in range(0,len(N),2)],[])
