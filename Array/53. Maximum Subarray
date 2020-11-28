@@ -9,3 +9,5 @@ def maxSubArray(self, nums: List[int]) -> int:
 		maxTotal = max(newNum, maxTotal)
 
 	return maxTotal	
+
+
