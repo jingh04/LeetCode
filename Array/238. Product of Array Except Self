@@ -1,0 +1,17 @@
+#Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+
+#Solution 1: time O(n) Space O(n)
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        size = len(nums)
+        LP = [0] * size
+        RP = [0] * size
+        LP[0] = 1
+        RP[size-1] = 1
+        for i in range(1,size):
+            LP[i] = LP[i-1] * nums[i-1]
+            RP[size-i-1] = RP[size-i] * nums[size-i]
+        res = []
+        for i in range(size):
+            res.append(LP[i]*RP[i])
+        return res
