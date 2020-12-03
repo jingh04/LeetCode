@@ -1,0 +1,24 @@
+#Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+#Follow up: Could you implement a solution using only O(1) extra space complexity and O(n) runtime complexity?
+
+#Solution 1: my submission
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        nums.sort()
+        N = len(nums)
+        if nums[N-1] < N:
+            return N
+        elif nums[0] == 1:
+            return 0
+        else:
+            for i in range(0,N-1):
+                if nums[i+1] - nums[i] == 2:
+                    return(nums[i] + 1)
+                    
+#Solution 2:
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        N = len(nums)
+        E_SUM = N*(N+1)//2
+        SUM = sum(nums)
+        return E_SUM - SUM
