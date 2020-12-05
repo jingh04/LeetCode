@@ -1,0 +1,15 @@
+#Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.
+
+#Solution 1:
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        HASH = {}
+        n = len(nums)
+        for i in range(n):
+            if nums[i] not in HASH:
+                HASH[nums[i]] = i
+            else:
+                if i - HASH[nums[i]] <= k:
+                    return True
+                HASH[nums[i]] = i
+        return False
