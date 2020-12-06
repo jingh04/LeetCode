@@ -15,3 +15,10 @@ class Solution:
             for i in range(len(frags)):
                 ans['.'.join(frags[i:])] += count
         return ['{} {}'.format(ct, dom) for dom, ct in ans.items()]
+
+
+
+
+
+
+
