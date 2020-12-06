@@ -1,0 +1,26 @@
+#Given a string, find the first non-repeating character in it and return its index. If it doesn't exist, return -1.
+
+#Solution 1: my submission
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        if len(s) == 0:
+            return -1
+        if len(s) == 1:
+            return 0
+        hash_time = {}
+        hash_pos = {}
+        for i, letter in enumerate(s):
+            if letter in hash_time:
+                hash_time[letter] += 1
+            else:
+                hash_time[letter] = 1
+                hash_pos[letter] = i
+        ans = len(s)
+        found = 0
+        for x in hash_time:
+            if hash_time[x] == 1 and hash_pos[x] < ans:
+                ans = hash_pos[x]
+                found += 1
+        if found > 0:
+            return ans
+        return -1
