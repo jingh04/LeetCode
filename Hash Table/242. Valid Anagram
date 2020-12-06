@@ -1,0 +1,17 @@
+#Given two strings s and t , write a function to determine if t is an anagram of s.
+
+#Solution 1: my submission
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        def gen(x):
+            ans = {}
+            for letter in x:
+                if letter in ans:
+                    ans[letter] += 1
+                else:
+                    ans[letter] = 1
+            return ans
+        if gen(s) == gen(t):
+            return True
+        else:
+            return False
